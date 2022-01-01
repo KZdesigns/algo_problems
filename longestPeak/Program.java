@@ -20,17 +20,86 @@ class Program {
    @return and int value reps the longest peak in the array.
    */
    public static int longestPeak(int[] array) {
-   
-      for(int i = 0; i < array.length - 1; i++) {
-         
-         int num1 = array[i];
-         int num2 = array[i+1];
-         System.out.print("[" + num1 + "," + num2 + "]");
+          
+      int currentPeakLength = 0;
+      int longestPeakLength = 0;
       
+      for(int i = 0; i < array.length; i++) {
+      
+         int leftCount = Program.checkLeft(i, array);
+         int rightCount = Program.checkRight(i, array);
+         
+         if(leftCount >= 1 && rightCount >= 1) {
+            currentPeakLength = 1 + leftCount + rightCount;
+         }
+         
+         
+         if(currentPeakLength >= 3 && currentPeakLength > longestPeakLength) {
+            longestPeakLength = currentPeakLength;
+         }
+         
+         currentPeakLength = 0;
       }
    
    
-      return -1;   
+      return longestPeakLength; 
+   }
+   
+   /**
+   
+   */
+   public static int checkLeft(int i, int[] array) {
+      
+      int count = 0;
+      
+      if(i == 0) {
+         return count;
+      }
+      
+      while (i > 0) {
+         int num1 = array[i];
+         int num2 = array[i - 1];
+         
+         if(num1 > num2) {
+            count++;
+         } else {
+            return count;
+         }
+      
+         i--;
+      }
+      
+      
+      return count;
+   }
+   
+   /**
+   
+   */
+   public static int checkRight(int i, int[] array) {
+   
+      int count = 0;
+      
+      if(i == array.length - 1) {
+         return count;
+      }
+      
+      while (i < array.length - 1) {
+         int num1 = array[i];
+         int num2 = array[i + 1];
+         
+         if(num1 > num2) {
+            count++;
+         } else {
+            return count;
+         }
+      
+         i++;
+      }
+      
+      
+      return count;
+   
    }
 
 }
