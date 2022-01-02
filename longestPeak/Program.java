@@ -46,7 +46,10 @@ class Program {
    }
    
    /**
-   
+   checkLeft method checks the left side of the potential peak and counts the length.
+   @param i - the current peak index.
+   @param array - the array of ints.
+   @return the count of left side of the peak.
    */
    public static int checkLeft(int i, int[] array) {
       
@@ -74,7 +77,10 @@ class Program {
    }
    
    /**
-   
+   checkRight method checks the right side of the potential peak and counts the length.
+   @param i - the current peak index.
+   @param array - the array of ints.
+   @return the count of right side of the peak.
    */
    public static int checkRight(int i, int[] array) {
    
