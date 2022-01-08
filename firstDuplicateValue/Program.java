@@ -4,6 +4,10 @@ class Program {
 
    public static int firstDuplicateValue(int[] array) {
       
+      if(array.length <= 1) {
+         return -1;
+      }
+      
       for(int i = 0; i < array.length - 1; i++) {
          int value = array[i];
          
@@ -18,12 +22,8 @@ class Program {
          }
       } 
       
-      if(array.length <= 0) {
-         return -1;
-      }
-      
       if(array[array.length-1] < 0) {
-         return array[array.length-1];
+         return array[array.length-1] * -1;
       }
       
       return -1;
